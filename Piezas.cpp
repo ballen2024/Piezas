@@ -48,11 +48,12 @@ Piezas::Piezas()
 
     if(debug)
     {
-        for(int i = 0; i < (int)board.size(); i++)
+        for(int i = (int)board.size(); i >= 0; i--)
         {
             for(int j = 0; j < (int)board[i].size(); j++)
             {
-                cout << board[i][j] << " ";
+                // cout << board[i][j] << " ";
+                cout << "[" << i << ","<<j<<"] ";
             }//for j
             cout << endl;
         }//for i
@@ -66,6 +67,16 @@ Piezas::Piezas()
 **/
 void Piezas::reset()
 {
+    // reset board to have blank pieces
+    for(int i = 0; i < BOARD_ROWS; i++)
+    {
+        std::vector<Piece> v;
+        for(int j = 0; j < BOARD_COLS; j++)
+        {
+            v.push_back(Blank);
+        }//for j
+        board.push_back(v);
+    }//for i
 }
 
 /**
