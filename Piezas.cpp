@@ -33,18 +33,18 @@ const bool debug = true; //debugger boolean
 **/
 Piezas::Piezas()
 {
-    // initalise vector board to "Blank" Pieces
+    // initalize vector board to "Blank" Pieces
     for(int i = 0; i < BOARD_ROWS; i++)
     {
-        std::vector<Piece> v;
+        std::vector<Piece> columns;
         for(int j = 0; j < BOARD_COLS; j++)
         {
-            v.push_back(Blank);
+            columns.push_back(Blank);
         }//for j
-        board.push_back(v);
+        board.push_back(columns);
     }//for i
 
-    turn = X; //specify that it is X's turn first
+    turn = Piece::X; //specify that it is X's turn first
 
     if(debug)
     {
@@ -58,7 +58,6 @@ Piezas::Piezas()
             cout << endl;
         }//for i
     }//debug
-
 }//Piezas()
 
 /**
@@ -70,14 +69,15 @@ void Piezas::reset()
     // reset board to have blank pieces
     for(int i = 0; i < BOARD_ROWS; i++)
     {
-        std::vector<Piece> v;
+        std::vector<Piece> columns;
         for(int j = 0; j < BOARD_COLS; j++)
         {
-            v.push_back(Blank);
+            columns.push_back(Blank);
         }//for j
-        board.push_back(v);
+        board.push_back(columns);
     }//for i
-}
+    turn = X; //start game on X's turn
+}//reset()
 
 /**
  * Places a piece of the current turn on the board, returns what
@@ -88,9 +88,26 @@ void Piezas::reset()
  * Trying to drop a piece where it cannot be placed loses the player's turn
 **/ 
 Piece Piezas::dropPiece(int column)
-{
+{   
+    //if the placement is out of bounds, it will not be allowed and is 'Invalid'
+    if(column+1 > BOARD_COLS) return Invalid;
+
+    Piece current_piece = turn; //grab the correct piece for whose turn it is
+    turn = turn == X ? O : X; //toggle whice Piece's turn it is
+    for(int i = 0; i < BOARD_COLS; i++)
+    {
+        //place the piece in the first 'Blank' space
+        if(board[i][column] == Blank)
+        {
+            if(debug)
+            {
+                cout << "Placing " << current_piece << " at " << board[i][column] << endl;
+            }
+            return board[i][column] = current_piece;
+        }//if
+    }//for i
     return Blank;
-}
+}//dropPiece()
 
 /**
  * Returns what piece is at the provided coordinates, or Blank if there
@@ -98,19 +115,7 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
-    if(row==0)
-    {
-        return board[2][column];
-    }//if
-    if(row==2)
-    {
-        return board[0][column];
-    }//if
-    else
-    {
-        return board[row][column];
-    }//else
-    return Blank;
+    return (row > BOARD_ROWS || column > BOARD_COLS) ? Invalid : board[row][column];
 }//pieceAt()
 
 /**
@@ -124,14 +129,94 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
+    // Check to make sure all of the spaces have been filled
+    for(int i = 0; i < BOARD_ROWS; i++)
+    {   
+        for(int j = 0; j < BOARD_COLS; j++)
+        {
+            if(board[i][j] == Blank) return Invalid;
+        }//for j
+    }//for i
+
+    // declare some global variables to maintain highest 
+    int x_global = 0;
+    int o_global = 0;
+
+    // Scan each row and find the max consecutive X's & O'x
+    for(int i = 0; i < BOARD_ROWS; i++)
+    {
+        int x_local = 0;
+        int o_local = 0;
+        for(int j = 0; j < BOARD_COLS; j++)
+        {
+            Piece cur = board[i][j];
+            if(cur == X)
+            {
+                x_local++;
+                o_global = (o_local > o_global) ? o_local : o_global;
+                o_local = 0;
+            }//if
+            else if(cur == O)
+            { 
+                o_local++;
+                x_global = (x_local > x_global) ? x_local : x_global;
+                x_local = 0;
+            }//else if
+        }//for j
+        x_global = x_local;
+        o_global = o_local;
+    }//for i
+
+
+    // Only proceeed if neither of them is equal to 4
+    // 4 is the highest number of consecutive pieces
+    // you can have
+    if(x_global != 4 && o_global != 4)
+    {
+        for(int i = 0; i < BOARD_COLS; i++)
+        {
+            int x_local = 0;
+            int o_local = 0;
+            for(int j = 0; j < BOARD_ROWS; j++)
+            {
+                Piece cur = board[j][i];
+                if(cur == X)
+                {
+                    x_local++;
+                    o_global = (o_local > o_global) ? o_local : o_global;
+                    o_local = 0;
+                }//if
+                else if(cur == O)
+                { 
+                    o_local++;
+                    x_global = (x_local > x_global) ? x_local : x_global;
+                    x_local = 0;
+                }//else if
+            }//for j
+            x_global = (x_local > x_global) ? x_local : x_global;
+            o_global = (o_local > o_global) ? o_local : o_global;
+        }//for i
+    }//if
+
     return Blank;
 }
 
 
 //empty main to check compilation
 int main() {
-    Piezas game;
-    Piece p = game.pieceAt(0,2);
-    cout << p << endl;
+    Piezas g;
+    g.dropPiece(3);//x
+    g.dropPiece(2);//o
+    g.dropPiece(1);//x
+    g.dropPiece(3);//o
+    g.dropPiece(3);//x
+    g.dropPiece(0);//o
+    g.dropPiece(1);//x
+    g.dropPiece(0);//o
+    g.dropPiece(0);//x
+    g.dropPiece(2);//o
+    g.dropPiece(1);//x
+    g.dropPiece(2);//o
+    cout << g.gameState() << endl;
     return 0;
 }
