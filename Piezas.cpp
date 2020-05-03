@@ -1,5 +1,16 @@
+//Piezas.cpp
+//CSCI 430 Quiz 03
+//Brendan Allen
+
 #include "Piezas.h"
+#include <iostream>
 #include <vector>
+
+using std::cout;
+using std::endl;
+
+const bool debug = true; //debugger boolean
+
 /** CLASS Piezas
  * Class for representing a Piezas vertical board, which is roughly based
  * on the game "Connect Four" where pieces are placed in a column and 
@@ -22,7 +33,32 @@
 **/
 Piezas::Piezas()
 {
-}
+    // initalise vector board to "Blank" Pieces
+    for(int i = 0; i < BOARD_ROWS; i++)
+    {
+        std::vector<Piece> v;
+        for(int j = 0; j < BOARD_COLS; j++)
+        {
+            v.push_back(Blank);
+        }//for j
+        board.push_back(v);
+    }//for i
+
+    turn = X; //specify that it is X's turn first
+
+    if(debug)
+    {
+        for(int i = 0; i < (int)board.size(); i++)
+        {
+            for(int j = 0; j < (int)board[i].size(); j++)
+            {
+                cout << board[i][j] << " ";
+            }//for j
+            cout << endl;
+        }//for i
+    }//debug
+
+}//Piezas()
 
 /**
  * Resets each board location to the Blank Piece value, with a board of the
@@ -66,4 +102,11 @@ Piece Piezas::pieceAt(int row, int column)
 Piece Piezas::gameState()
 {
     return Blank;
+}
+
+
+//empty main to check compilation
+int main() {
+    Piezas game;
+    return 0;
 }
