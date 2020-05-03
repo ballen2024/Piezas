@@ -1,4 +1,6 @@
 # Piezas
+[![Build Status](https://travis-ci.org/ballen2024/Piezas.svg?branch=master)](https://travis-ci.org/ballen2024/Piezas)
+[![Coverage Status](https://coveralls.io/repos/github/ballen2024/Piezas/badge.svg?branch=master)](https://coveralls.io/github/ballen2024/Piezas?branch=master)
 
 ## Associated Enumerated Types
 `Piece` has four possible values: `X`,`O`,`Invalid`, and `Blank`
