@@ -98,8 +98,20 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
+    if(row==0)
+    {
+        return board[2][column];
+    }//if
+    if(row==2)
+    {
+        return board[0][column];
+    }//if
+    else
+    {
+        return board[row][column];
+    }//else
     return Blank;
-}
+}//pieceAt()
 
 /**
  * Returns which Piece has won, if there is a winner, Invalid if the game
@@ -119,5 +131,7 @@ Piece Piezas::gameState()
 //empty main to check compilation
 int main() {
     Piezas game;
+    Piece p = game.pieceAt(0,2);
+    cout << p << endl;
     return 0;
 }
