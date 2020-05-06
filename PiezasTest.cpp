@@ -180,15 +180,15 @@ TEST(PiezasTest, negativeColumnIndex)
 }//negativeColumnIndex
 
 
-// /* Make sure both row & column out of bounds indeces are handled correctly */
-// TEST(PiezasTest, bothOutOfBounds)
-// {
-// 	Piezas obj; //create game object
-// 	obj.dropPiece(0); //drop an X in column 0
-// 	obj.dropPiece(0); //drop an O in column 0
-// 	Piece out_of_bounds = obj.pieceAt(4, 5); //attempt to look at a space that doesn't exist
-// 	ASSERT_EQ(out_of_bounds, Invalid);
-// }//bothOutOfBounds
+/* Make sure both row & column out of bounds indeces are handled correctly */
+TEST(PiezasTest, checkBlankSpace)
+{
+	Piezas obj; //create game object
+	obj.dropPiece(0); //drop an X in column 0
+	obj.dropPiece(0); //drop an O in column 0
+	Piece blank = obj.pieceAt(0, 1);
+	ASSERT_EQ(blank, Blank);
+}//bothOutOfBounds
 
 
 
