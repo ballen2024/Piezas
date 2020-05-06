@@ -17,10 +17,11 @@ class PiezasTest : public ::testing::Test
 TEST(PiezasTest, sanityCheck)
 {
 	ASSERT_TRUE(true);
-}
+}//sanityCheck
 
 /***** Testing of Constructor Piezas() ******/
 
+/* Make sure that the constructor creates a blank board */
 TEST(PiezasTest, startBlank)
 {
 	Piezas obj; //create game object
@@ -33,12 +34,23 @@ TEST(PiezasTest, startBlank)
 	}// for i
 }//startBlank
 
+/* Make sure that the constructor correctly sets the turn to X on init */
 TEST(PiezasTest, checkCorrectTurn)
 {
 	Piezas obj; //create game object
 	Piece first_turn = obj.dropPiece(0); //drop an X in column 0
 	ASSERT_EQ(first_turn, X);
 }//checkCorrectTurn
+
+/* Sad test to make sure that it is never O's turn first */
+TEST(PiezasTest, incorrectTurnOnInit)
+{
+	Piezas obj; //create game object
+	Piece first_turn = obj.dropPiece(0); //drop an X in column 0
+	ASSERT_NEQ(first_turn, O);
+}//incorrectTurnOnInit
+
+/****** End of Constructor Testing *****/
 
 /***** Testing of reset() *****/
 
@@ -49,6 +61,8 @@ TEST(PiezasTest, resetBoard)
 	obj.reset(); //reset the board
 	ASSERT_EQ(obj.pieceAt(0,0), Blank); //assert that the X we just dropped has been reset
 }//resetBoard
+
+/***** End of reset() Testing *****/
 
 
 /***** Testing of dropPiece() *****/
@@ -87,8 +101,13 @@ TEST(PiezasTest, fullColumn)
 	ASSERT_EQ(lost_turn, Blank);
 }//fullColumn
 
+/****** End of dropPiece() Testing ******/
 
 
 /***** Testing of pieceAt() *****/
 
+/***** End of pieceAt() Testing *****/
+
 /***** Testing of gameState() *****/
+
+/***** End of gameState() Testing *****/
