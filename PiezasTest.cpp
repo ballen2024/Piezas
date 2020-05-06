@@ -179,8 +179,7 @@ TEST(PiezasTest, negativeColumnIndex)
 	ASSERT_EQ(out_of_bounds, Invalid);
 }//negativeColumnIndex
 
-
-/* Make sure both row & column out of bounds indeces are handled correctly */
+/* Check for Blank space */
 TEST(PiezasTest, checkBlankSpace)
 {
 	Piezas obj; //create game object
@@ -188,6 +187,16 @@ TEST(PiezasTest, checkBlankSpace)
 	obj.dropPiece(0); //drop an O in column 0
 	Piece blank = obj.pieceAt(0, 1);
 	ASSERT_EQ(blank, Blank);
+}//bothOutOfBounds
+
+/* Check for X space */
+TEST(PiezasTest, checkXSpace)
+{
+	Piezas obj; //create game object
+	obj.dropPiece(0); //drop an X in column 0
+	obj.dropPiece(0); //drop an O in column 0
+	Piece x = obj.pieceAt(0, 0);
+	ASSERT_EQ(x, X);
 }//bothOutOfBounds
 
 
