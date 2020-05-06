@@ -296,8 +296,9 @@ TEST(PiezasTest, oVictory)
 	{
 		for(int j = 0; j < BOARD_COLS; j++)
 		{
-			if(obj.pieceAt(i, j) == O) string c = "O";
-			else string c = "X";
+			string c;
+			if(obj.pieceAt(i, j) == O) c = "O";
+			else c = "X";
 			cout << c << " "
 		}
 	}
