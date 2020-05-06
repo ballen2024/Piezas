@@ -199,6 +199,16 @@ TEST(PiezasTest, checkXSpace)
 	ASSERT_EQ(x, X);
 }//bothOutOfBounds
 
+/* Check for X space */
+TEST(PiezasTest, checkOSpace)
+{
+	Piezas obj; //create game object
+	obj.dropPiece(0); //drop an X in column 0
+	obj.dropPiece(0); //drop an O in column 0
+	Piece o = obj.pieceAt(1, 0);
+	ASSERT_EQ(o, O);
+}//bothOutOfBounds
+
 
 
 
