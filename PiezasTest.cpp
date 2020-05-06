@@ -74,7 +74,6 @@ TEST(PiezasTest, fullColumn)
 	obj.dropPiece(0); //drop an X in column 0
 	obj.dropPiece(0); //drop an O in column 0
 	obj.dropPiece(0); //drop an X in column 0
-	obj.dropPiece(0); //drop an O in column 0
 	Piece lost_turn = obj.dropPiece(0); //attemp to drop an O in colum 0
 	ASSERT_EQ(lost_turn, Blank);
 }//fullColumn
