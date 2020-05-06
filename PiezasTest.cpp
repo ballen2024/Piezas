@@ -76,6 +76,14 @@ TEST(PiezasTest, outofBounds)
 	ASSERT_EQ(dropped, Invalid);
 }//outofBounds
 
+/* attempt to drop the piece at a negative index */
+TEST(PiezasTest, negativeIndex)
+{
+	Piezas obj; //create game object
+	Piece dropped = obj.dropPiece(-1); //drop an X in column 4 (out of bounds)
+	ASSERT_EQ(dropped, Invalid);
+}//negativeIndex
+
 /* ensure that the turn toggles from X to O */
 TEST(PiezasTest, turnTogglingO)
 {
@@ -208,11 +216,6 @@ TEST(PiezasTest, checkOSpace)
 	Piece o = obj.pieceAt(1, 0);
 	ASSERT_EQ(o, O);
 }//bothOutOfBounds
-
-
-
-
-
 
 /***** End of pieceAt() Testing *****/
 
