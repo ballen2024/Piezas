@@ -9,6 +9,8 @@
 using std::string;
 using std::cout;
 using std::endl;
+
+const bool debug = false;
  
 class PiezasTest : public ::testing::Test
 {
@@ -292,17 +294,20 @@ TEST(PiezasTest, oVictory)
 	obj.dropPiece(0);
 	obj.dropPiece(1);
 	Piece o_victory = obj.gameState();
-	for(int i = 0; i < BOARD_ROWS; i++)
+	if(debug)
 	{
-		for(int j = 0; j < BOARD_COLS; j++)
+		for(int i = 0; i < BOARD_ROWS; i++)
 		{
-			string c;
-			if(obj.pieceAt(i, j) == O) c = "O";
-			else c = "X";
-			cout << c << " ";
-		}
-		cout<<endl;
-	}
+			for(int j = 0; j < BOARD_COLS; j++)
+			{
+				string c;
+				if(obj.pieceAt(i, j) == O) c = "O";
+				else c = "X";
+				cout << c << " ";
+			}//for j
+			cout<<endl;
+		}//for i
+	}//if debug
 	ASSERT_EQ(o_victory, O);
 }//xVictory
 
