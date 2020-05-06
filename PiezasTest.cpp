@@ -52,6 +52,7 @@ TEST(PiezasTest, incorrectTurnOnInit)
 
 /****** End of Constructor Testing *****/
 
+
 /***** Testing of reset() *****/
 
 TEST(PiezasTest, resetBoard)
@@ -67,6 +68,7 @@ TEST(PiezasTest, resetBoard)
 
 /***** Testing of dropPiece() *****/
 
+/* attempt to drop the piece out of bounds */
 TEST(PiezasTest, outofBounds)
 {
 	Piezas obj; //create game object
@@ -74,6 +76,7 @@ TEST(PiezasTest, outofBounds)
 	ASSERT_EQ(dropped, Invalid);
 }//outofBounds
 
+/* ensure that the turn toggles from X to O */
 TEST(PiezasTest, turnTogglingO)
 {
 	Piezas obj; //create game object
@@ -82,6 +85,7 @@ TEST(PiezasTest, turnTogglingO)
 	ASSERT_EQ(second_turn, O);
 }//turnTogglingO
 
+/* ensure that the turn toggles from O to X */
 TEST(PiezasTest, turnTogglingX)
 {
 	Piezas obj; //create game object
@@ -91,6 +95,10 @@ TEST(PiezasTest, turnTogglingX)
 	ASSERT_EQ(third_turn, X);
 }//turnTogglingX
 
+/* 
+ * attempt to drop a piece in a full column 
+ * specifically check that it returns Blank
+*/ 
 TEST(PiezasTest, fullColumn)
 {
 	Piezas obj; //create game object
@@ -100,6 +108,21 @@ TEST(PiezasTest, fullColumn)
 	Piece lost_turn = obj.dropPiece(0); //attemp to drop an O in colum 0
 	ASSERT_EQ(lost_turn, Blank);
 }//fullColumn
+
+/* 
+ * make sure that the turn is correctly lost
+ * and the turn toggles
+*/
+TEST(PiezasTest, loseTurn)
+{
+	Piezas obj; //create game object
+	obj.dropPiece(0); //drop an X in column 0
+	obj.dropPiece(0); //drop an O in column 0
+	obj.dropPiece(0); //drop an X in column 0
+	obj.dropPiece(0); //attempt to drop an O in colum 0; should lose turn
+	Piece p = obj.dropPiece(1); //drop an X in column 1
+	ASSERT_EQ(p, X);
+}//loseTurn
 
 /****** End of dropPiece() Testing ******/
 
