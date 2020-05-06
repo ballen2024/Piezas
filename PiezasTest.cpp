@@ -159,15 +159,36 @@ TEST(PiezasTest, bothOutOfBounds)
 	ASSERT_EQ(out_of_bounds, Invalid);
 }//bothOutOfBounds
 
-/* Make sure both row & column out of bounds indeces are handled correctly */
-TEST(PiezasTest, negativeIndex)
+/* Make sure function handles negative index correctly */
+TEST(PiezasTest, negativeRowIndex)
 {
 	Piezas obj; //create game object
 	obj.dropPiece(0); //drop an X in column 0
 	obj.dropPiece(0); //drop an O in column 0
 	Piece out_of_bounds = obj.pieceAt(-1, 0); //attempt to look at a space that doesn't exist
 	ASSERT_EQ(out_of_bounds, Invalid);
-}//negativeIndex
+}//negativeRowIndex
+
+/* Make sure function handles negative index correctly */
+TEST(PiezasTest, negativeColumnIndex)
+{
+	Piezas obj; //create game object
+	obj.dropPiece(0); //drop an X in column 0
+	obj.dropPiece(0); //drop an O in column 0
+	Piece out_of_bounds = obj.pieceAt(0, -1); //attempt to look at a space that doesn't exist
+	ASSERT_EQ(out_of_bounds, Invalid);
+}//negativeColumnIndex
+
+
+// /* Make sure both row & column out of bounds indeces are handled correctly */
+// TEST(PiezasTest, bothOutOfBounds)
+// {
+// 	Piezas obj; //create game object
+// 	obj.dropPiece(0); //drop an X in column 0
+// 	obj.dropPiece(0); //drop an O in column 0
+// 	Piece out_of_bounds = obj.pieceAt(4, 5); //attempt to look at a space that doesn't exist
+// 	ASSERT_EQ(out_of_bounds, Invalid);
+// }//bothOutOfBounds
 
 
 
