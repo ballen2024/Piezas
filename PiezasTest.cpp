@@ -60,13 +60,22 @@ TEST(PiezasTest, outofBounds)
 	ASSERT_EQ(dropped, Invalid);
 }//outofBounds
 
-TEST(PiezasTest, turnToggling)
+TEST(PiezasTest, turnTogglingO)
 {
 	Piezas obj; //create game object
 	obj.dropPiece(0); //drop an X in column 0
 	Piece second_turn = obj.dropPiece(0); //drop an O in column 0
 	ASSERT_EQ(second_turn, O);
-}//turnToggling
+}//turnTogglingO
+
+TEST(PiezasTest, turnTogglingX)
+{
+	Piezas obj; //create game object
+	obj.dropPiece(0); //drop an X in column 0
+	obj.dropPiece(0); //drop and O in column 0
+	Piece third_turn = obj.dropPiece(1); //drop an X in column 1
+	ASSERT_EQ(third_turn, X);
+}//turnTogglingX
 
 TEST(PiezasTest, fullColumn)
 {
