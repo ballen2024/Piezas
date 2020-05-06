@@ -164,8 +164,8 @@ Piece Piezas::gameState()
                 x_local = 0;
             }//else if
         }//for j
-        x_global = x_local;
-        o_global = o_local;
+        x_global = (x_local > x_global) ? x_local : x_global;
+        o_global = (o_local > o_global) ? o_local : o_global;
     }//for i
 
     // Only proceeed if neither of them is equal to 4
