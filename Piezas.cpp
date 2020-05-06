@@ -91,6 +91,10 @@ Piece Piezas::dropPiece(int column)
 
     Piece current_piece = turn; //grab the correct piece for whose turn it is
     turn = turn == X ? O : X; //toggle whice Piece's turn it is
+    if(board[BOARD_ROWS][column] != Blank)
+    {
+        return Blank; //case of column being full
+    }
     for(int i = 0; i < BOARD_COLS; i++)
     {
         //place the piece in the first 'Blank' space
@@ -103,7 +107,7 @@ Piece Piezas::dropPiece(int column)
             return board[i][column] = current_piece;
         }//if
     }//for i
-    return Blank; //case of the column being full
+    return Invalid; //should never reach this point
 }//dropPiece()
 
 /**
