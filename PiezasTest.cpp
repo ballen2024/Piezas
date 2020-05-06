@@ -66,13 +66,13 @@ TEST(PiezasTest, resetBoard)
 	ASSERT_EQ(obj.pieceAt(0,0), Blank); //assert that the X we just dropped has been reset
 }//resetBoard
 
-TEST(PiezasTest, resetBoard)
-{
-	Piezas obj; //create game object
-	obj.dropPiece(0); //drop an X in column 0
-	obj.reset(); //reset the board
-	ASSERT_EQ(obj.pieceAt(0,0), Blank); //assert that the X we just dropped has been reset
-}//resetBoard
+// TEST(PiezasTest, resetBoard)
+// {
+// 	Piezas obj; //create game object
+// 	obj.dropPiece(0); //drop an X in column 0
+// 	obj.reset(); //reset the board
+// 	ASSERT_EQ(obj.pieceAt(0,0), Blank); //assert that the X we just dropped has been reset
+// }//resetBoard
 
 /***** End of reset() Testing *****/
 
