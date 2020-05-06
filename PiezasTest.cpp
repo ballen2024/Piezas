@@ -129,6 +129,16 @@ TEST(PiezasTest, loseTurn)
 
 /***** Testing of pieceAt() *****/
 
+TEST(PiezasTest, rowOutOfBounds)
+{
+	Piezas obj; //create game object
+	obj.dropPiece(0); //drop an X in column 0
+	obj.dropPiece(0); //drop an O in column 0
+	Piece out_of_bounds = obj.pieceAt(4, 0) //attempt to look at a space that doesn't exist
+	ASSERT_EQ(out_of_bounds, Invalid);
+}//rowOutOfBounds
+
+
 /***** End of pieceAt() Testing *****/
 
 /***** Testing of gameState() *****/
