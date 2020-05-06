@@ -301,6 +301,7 @@ TEST(PiezasTest, oVictory)
 			else c = "X";
 			cout << c << " ";
 		}
+		cout<<endl;
 	}
 	ASSERT_EQ(o_victory, O);
 }//xVictory
