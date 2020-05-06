@@ -29,16 +29,16 @@ TEST(PiezasTest, startBlank)
 		for(int j = 0; j < BOARD_COLS; j++)
 		{
 			ASSERT_EQ(obj.pieceAt(i , j), Blank);
-		}
-	}
-}
+		}// for j
+	}// for i
+}//startBlank
 
 TEST(PiezasTest, checkCorrectTurn)
 {
 	Piezas obj; //create game object
 	Piece first_turn = obj.dropPiece(0); //drop an X in column 0
 	ASSERT_EQ(first_turn, X);
-}
+}//checkCorrectTurn
 
 /***** Testing of reset() *****/
 
@@ -48,4 +48,18 @@ TEST(PiezasTest, resetBoard)
 	Piece first_turn = obj.dropPiece(0); //drop an X in column 0
 	obj.reset(); //reset the board
 	ASSERT_EQ(obj.pieceAt(0,0), Blank); //assert that the X we just dropped has been reset
-}
+}//resetBoard
+
+
+/***** Testing of dropPiece() *****/
+
+TEST(PiezasTest, outofBounds)
+{
+	Piezas obj; //create game object
+	Piece dropped = obj.dropPiece(0); //drop an X in column 4 (out of bounds)
+	ASSERT_EQ(dropped, Invalid);
+}//outofBounds
+
+/***** Testing of pieceAt() *****/
+
+/***** Testing of gameState() *****/
