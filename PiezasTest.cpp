@@ -234,7 +234,7 @@ TEST(PiezasTest, gameIsATie)
 	{
 		for(int j = 0; j < BOARD_COLS; j++)
 		{
-			obj.dropPiece(i, j); //auto populate board
+			obj.dropPiece(i); //auto populate board
 		}//for j
 	}// for i
 	Piece tie_game = obj.gameState();
