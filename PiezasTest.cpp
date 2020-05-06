@@ -56,7 +56,7 @@ TEST(PiezasTest, resetBoard)
 TEST(PiezasTest, outofBounds)
 {
 	Piezas obj; //create game object
-	Piece dropped = obj.dropPiece(0); //drop an X in column 4 (out of bounds)
+	Piece dropped = obj.dropPiece(4); //drop an X in column 4 (out of bounds)
 	ASSERT_EQ(dropped, Invalid);
 }//outofBounds
 
