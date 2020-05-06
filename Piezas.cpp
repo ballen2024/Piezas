@@ -198,7 +198,18 @@ Piece Piezas::gameState()
         }//for i
     }//if
 
-    return Blank;
+    if(o_global > x_global)
+    {
+        return O;
+    }//if
+    else if(x_global > o_global)
+    {
+        return X;
+    }//else if
+    else if(x_global == o_global)
+    {
+        return Blank;
+    }//else if
 }
 
 
