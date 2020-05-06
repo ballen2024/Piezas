@@ -4,8 +4,11 @@
 
 #include <gtest/gtest.h>
 #include <string>
+#include <iostream>
 #include "Piezas.h"
 using std::string;
+using std::cout;
+using std::endl;
  
 class PiezasTest : public ::testing::Test
 {
