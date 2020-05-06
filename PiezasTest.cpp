@@ -299,7 +299,7 @@ TEST(PiezasTest, oVictory)
 			string c;
 			if(obj.pieceAt(i, j) == O) c = "O";
 			else c = "X";
-			cout << c << " "
+			cout << c << " ";
 		}
 	}
 	ASSERT_EQ(o_victory, O);
