@@ -103,10 +103,7 @@ TEST(PiezasTest, turnTogglingX)
 	ASSERT_EQ(third_turn, X);
 }//turnTogglingX
 
-/* 
- * attempt to drop a piece in a full column 
- * specifically check that it returns Blank
-*/ 
+/* attempt to drop a piece in a full column; specifically check that it returns Blank */ 
 TEST(PiezasTest, fullColumn)
 {
 	Piezas obj; //create game object
@@ -117,10 +114,7 @@ TEST(PiezasTest, fullColumn)
 	ASSERT_EQ(lost_turn, Blank);
 }//fullColumn
 
-/* 
- * make sure that the turn is correctly lost
- * and the turn toggles
-*/
+/* Make sure that the turn is correctly lost and the turn toggles */
 TEST(PiezasTest, loseTurn)
 {
 	Piezas obj; //create game object
@@ -207,7 +201,7 @@ TEST(PiezasTest, checkXSpace)
 	ASSERT_EQ(x, X);
 }//bothOutOfBounds
 
-/* Check for X space */
+/* Check for O space */
 TEST(PiezasTest, checkOSpace)
 {
 	Piezas obj; //create game object
@@ -219,6 +213,20 @@ TEST(PiezasTest, checkOSpace)
 
 /***** End of pieceAt() Testing *****/
 
+
 /***** Testing of gameState() *****/
+
+/* Make sure incomplete Game is handled correctly */
+TEST(PiezasTest, gameNotOver)
+{
+	Piezas obj; //create game object
+	obj.dropPiece(0); //drop an X in column 0
+	obj.dropPiece(0); //drop an O in column 0
+	Piece incompleteGame = obj.gameState();
+	ASSERT_EQ(incompleteGame, Invalid);
+}//gameNotOver
+
+
+
 
 /***** End of gameState() Testing *****/
