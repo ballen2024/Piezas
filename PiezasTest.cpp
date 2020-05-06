@@ -258,7 +258,7 @@ TEST(PiezasTest, xVictory)
 	obj.dropPiece(1);
 	obj.dropPiece(0);
 	Piece x_victory = obj.gameState();
-	ASSERT_EQ(tie_game, X);
+	ASSERT_EQ(x_victory, X);
 }//xVictory
 
 
