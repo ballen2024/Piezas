@@ -91,7 +91,7 @@ Piece Piezas::dropPiece(int column)
 
     Piece current_piece = turn; //grab the correct piece for whose turn it is
     turn = turn == X ? O : X; //toggle whice Piece's turn it is
-    if(board[BOARD_ROWS][column] != Blank)
+    if(board[BOARD_ROWS - 1][column] != Blank)
     {
         return Blank; //case of column being full
     }
