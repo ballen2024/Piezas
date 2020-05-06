@@ -129,14 +129,37 @@ TEST(PiezasTest, loseTurn)
 
 /***** Testing of pieceAt() *****/
 
+/* Make sure pieceAt() correctly handles an out of bounds row */
 TEST(PiezasTest, rowOutOfBounds)
 {
 	Piezas obj; //create game object
 	obj.dropPiece(0); //drop an X in column 0
 	obj.dropPiece(0); //drop an O in column 0
-	Piece out_of_bounds = obj.pieceAt(4, 0) //attempt to look at a space that doesn't exist
+	Piece out_of_bounds = obj.pieceAt(4, 0); //attempt to look at a space that doesn't exist
 	ASSERT_EQ(out_of_bounds, Invalid);
 }//rowOutOfBounds
+
+/* Make sure pieceAt() correctly handles an out of bounds column */
+TEST(PiezasTest, columnOutOfBounds)
+{
+	Piezas obj; //create game object
+	obj.dropPiece(0); //drop an X in column 0
+	obj.dropPiece(0); //drop an O in column 0
+	Piece out_of_bounds = obj.pieceAt(0, 5); //attempt to look at a space that doesn't exist
+	ASSERT_EQ(out_of_bounds, Invalid);
+}//columnOutOfBounds
+
+/* Make sure both row & column out of bounds indeces are handled correctly */
+TEST(PiezasTest, bothOutOfBounds)
+{
+	Piezas obj; //create game object
+	obj.dropPiece(0); //drop an X in column 0
+	obj.dropPiece(0); //drop an O in column 0
+	Piece out_of_bounds = obj.pieceAt(4, 5); //attempt to look at a space that doesn't exist
+	ASSERT_EQ(out_of_bounds, Invalid);
+}//bothOutOfBounds
+
+
 
 
 /***** End of pieceAt() Testing *****/
