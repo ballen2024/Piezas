@@ -88,6 +88,7 @@ Piece Piezas::dropPiece(int column)
 {   
     //if the placement is out of bounds, it will not be allowed and is 'Invalid'
     if(column + 1 > BOARD_COLS || column < 0) return Invalid;
+    Piece p;
 
     Piece current_piece = turn; //grab the correct piece for whose turn it is
     turn = turn == X ? O : X; //toggle whice Piece's turn it is
@@ -105,7 +106,7 @@ Piece Piezas::dropPiece(int column)
                 cout << "Placing " << current_piece << " at " << board[i][column] << endl;
             }
             board[i][column] = current_piece;
-            Piece p = board[i][column];
+            p = board[i][column];
             break;
         }//if
     }//for i
