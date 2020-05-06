@@ -87,7 +87,7 @@ void Piezas::reset()
 Piece Piezas::dropPiece(int column)
 {   
     //if the placement is out of bounds, it will not be allowed and is 'Invalid'
-    if(column + 1 > BOARD_COLS) return Invalid;
+    if(column + 1 > BOARD_COLS || column < 0) return Invalid;
 
     Piece current_piece = turn; //grab the correct piece for whose turn it is
     turn = turn == X ? O : X; //toggle whice Piece's turn it is
