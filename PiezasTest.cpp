@@ -241,6 +241,26 @@ TEST(PiezasTest, gameIsATie)
 	ASSERT_EQ(tie_game, Blank);
 }//gameIsATie
 
+/* check handling of an X victory */
+TEST(PiezasTest, xVictory)
+{
+	Piezas obj; //create game object
+	obj.dropPiece(0);
+	obj.dropPiece(3);
+	obj.dropPiece(2);
+	obj.dropPiece(3);
+	obj.dropPiece(3);
+	obj.dropPiece(2);
+	obj.dropPiece(1);
+	obj.dropPiece(2);
+	obj.dropPiece(1);
+	obj.dropPiece(0);
+	obj.dropPiece(1);
+	obj.dropPiece(0);
+	Piece x_victory = obj.gameState();
+	ASSERT_EQ(tie_game, X);
+}//xVictory
+
 
 
 
