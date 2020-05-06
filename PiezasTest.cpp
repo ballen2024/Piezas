@@ -261,6 +261,26 @@ TEST(PiezasTest, xVictory)
 	ASSERT_EQ(x_victory, X);
 }//xVictory
 
+/* check handling of an O victory */
+TEST(PiezasTest, oVictory)
+{
+	Piezas obj; //create game object
+	obj.dropPiece(0);
+	obj.dropPiece(3);
+	obj.dropPiece(1);
+	obj.dropPiece(3);
+	obj.dropPiece(3);
+	obj.dropPiece(1);
+	obj.dropPiece(2);
+	obj.dropPiece(2);
+	obj.dropPiece(2);
+	obj.dropPiece(0);
+	obj.dropPiece(0);
+	obj.dropPiece(1);
+	Piece o_victory = obj.gameState();
+	ASSERT_EQ(o_victory, O);
+}//xVictory
+
 
 
 
