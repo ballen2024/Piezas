@@ -40,3 +40,12 @@ TEST(PiezasTest, checkCorrectTurn)
 	ASSERT_EQ(first_turn, X);
 }
 
+/***** Testing of reset() *****/
+
+TEST(PiezasTest, resetBoard)
+{
+	Piezas obj; //create game object
+	Piece first_turn = obj.dropPiece(0); //drop an X in column 0
+	obj.reset(); //reset the board
+	ASSERT_EQ(obj.pieceAt(0,0), Blank); //assert that the X we just dropped has been reset
+}

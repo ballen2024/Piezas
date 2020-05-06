@@ -9,7 +9,7 @@
 using std::cout;
 using std::endl;
 
-const bool debug = true; //debugger boolean
+const bool debug = false; //debugger boolean
 
 /** CLASS Piezas
  * Class for representing a Piezas vertical board, which is roughly based
