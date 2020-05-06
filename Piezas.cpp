@@ -168,7 +168,6 @@ Piece Piezas::gameState()
         o_global = o_local;
     }//for i
 
-
     // Only proceeed if neither of them is equal to 4
     // 4 is the highest number of consecutive pieces
     // you can have
@@ -198,7 +197,8 @@ Piece Piezas::gameState()
             o_global = (o_local > o_global) ? o_local : o_global;
         }//for i
     }//if
-
+    cout << "X Global: " << x_global<<endl;
+    cout << "O Global: " << o_global << endl;
     if(o_global > x_global)
     {
         return O;
