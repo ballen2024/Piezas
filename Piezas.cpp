@@ -104,9 +104,12 @@ Piece Piezas::dropPiece(int column)
             {
                 cout << "Placing " << current_piece << " at " << board[i][column] << endl;
             }
-            return board[i][column] = current_piece;
+            board[i][column] = current_piece;
+            Piece p = board[i][column];
+            break;
         }//if
     }//for i
+    return p;
 }//dropPiece()
 
 /**
