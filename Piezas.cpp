@@ -107,7 +107,6 @@ Piece Piezas::dropPiece(int column)
             return board[i][column] = current_piece;
         }//if
     }//for i
-    return Invalid; //should never reach this point
 }//dropPiece()
 
 /**
@@ -197,8 +196,7 @@ Piece Piezas::gameState()
             o_global = (o_local > o_global) ? o_local : o_global;
         }//for i
     }//if
-    cout << "X Global: " << x_global<<endl;
-    cout << "O Global: " << o_global << endl;
+
     if(o_global > x_global)
     {
         return O;

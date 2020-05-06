@@ -312,6 +312,4 @@ TEST(PiezasTest, oVictory)
 }//xVictory
 
 
-
-
 /***** End of gameState() Testing *****/
