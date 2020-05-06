@@ -90,7 +90,7 @@ void Piezas::reset()
 Piece Piezas::dropPiece(int column)
 {   
     //if the placement is out of bounds, it will not be allowed and is 'Invalid'
-    if(column+1 > BOARD_COLS) return Invalid;
+    if(column + 1 > BOARD_COLS) return Invalid;
 
     Piece current_piece = turn; //grab the correct piece for whose turn it is
     turn = turn == X ? O : X; //toggle whice Piece's turn it is
@@ -106,7 +106,7 @@ Piece Piezas::dropPiece(int column)
             return board[i][column] = current_piece;
         }//if
     }//for i
-    return Blank;
+    return Blank; //case of the column being full
 }//dropPiece()
 
 /**
@@ -115,7 +115,7 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
-    return (row > BOARD_ROWS || column > BOARD_COLS) ? Invalid : board[row][column];
+    return (row + 1 > BOARD_ROWS || column + 1 > BOARD_COLS) ? Invalid : board[row][column];
 }//pieceAt()
 
 /**
