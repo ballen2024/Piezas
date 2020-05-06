@@ -47,7 +47,7 @@ TEST(PiezasTest, incorrectTurnOnInit)
 {
 	Piezas obj; //create game object
 	Piece first_turn = obj.dropPiece(0); //drop an X in column 0
-	ASSERT_NEQ(first_turn, O);
+	ASSERT_NE(first_turn, O);
 }//incorrectTurnOnInit
 
 /****** End of Constructor Testing *****/
