@@ -203,28 +203,26 @@ Piece Piezas::gameState()
     {
         return X;
     }//else if
-    else if(x_global == o_global)
-    {
-        return Blank;
-    }//else if
+    
+    return Blank;
 }
 
 
-//empty main to check compilation
-int main() {
-    Piezas g;
-    g.dropPiece(3);//x
-    g.dropPiece(2);//o
-    g.dropPiece(1);//x
-    g.dropPiece(3);//o
-    g.dropPiece(3);//x
-    g.dropPiece(0);//o
-    g.dropPiece(1);//x
-    g.dropPiece(0);//o
-    g.dropPiece(0);//x
-    g.dropPiece(2);//o
-    g.dropPiece(1);//x
-    g.dropPiece(2);//o
-    cout << g.gameState() << endl;
-    return 0;
-}
+// //empty main to check compilation
+// int main() {
+//     Piezas g;
+//     g.dropPiece(3);//x
+//     g.dropPiece(2);//o
+//     g.dropPiece(1);//x
+//     g.dropPiece(3);//o
+//     g.dropPiece(3);//x
+//     g.dropPiece(0);//o
+//     g.dropPiece(1);//x
+//     g.dropPiece(0);//o
+//     g.dropPiece(0);//x
+//     g.dropPiece(2);//o
+//     g.dropPiece(1);//x
+//     g.dropPiece(2);//o
+//     cout << g.gameState() << endl;
+//     return 0;
+// }
