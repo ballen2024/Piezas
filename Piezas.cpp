@@ -69,14 +69,11 @@ void Piezas::reset()
     // reset board to have blank pieces
     for(int i = 0; i < BOARD_ROWS; i++)
     {
-        std::vector<Piece> columns;
         for(int j = 0; j < BOARD_COLS; j++)
         {
-            columns.push_back(Blank);
+            board[i][j] = Blank;
         }//for j
-        board.push_back(columns);
     }//for i
-    turn = X; //start game on X's turn
 }//reset()
 
 /**
