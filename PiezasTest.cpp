@@ -45,7 +45,7 @@ TEST(PiezasTest, checkCorrectTurn)
 TEST(PiezasTest, resetBoard)
 {
 	Piezas obj; //create game object
-	Piece first_turn = obj.dropPiece(0); //drop an X in column 0
+	obj.dropPiece(0); //drop an X in column 0
 	obj.reset(); //reset the board
 	ASSERT_EQ(obj.pieceAt(0,0), Blank); //assert that the X we just dropped has been reset
 }//resetBoard
@@ -63,7 +63,7 @@ TEST(PiezasTest, outofBounds)
 TEST(PiezasTest, turnToggling)
 {
 	Piezas obj; //create game object
-	Piece first_turn = obj.dropPiece(0); //drop an X in column 0
+	obj.dropPiece(0); //drop an X in column 0
 	Piece second_turn = obj.dropPiece(0); //drop an O in column 0
 	ASSERT_EQ(second_turn, O);
 }//turnToggling
@@ -77,6 +77,8 @@ TEST(PiezasTest, fullColumn)
 	Piece lost_turn = obj.dropPiece(0); //attemp to drop an O in colum 0
 	ASSERT_EQ(lost_turn, Blank);
 }//fullColumn
+
+
 
 /***** Testing of pieceAt() *****/
 
