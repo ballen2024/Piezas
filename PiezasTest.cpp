@@ -3,7 +3,9 @@
 **/
 
 #include <gtest/gtest.h>
+#include <string>
 #include "Piezas.h"
+using std::string;
  
 class PiezasTest : public ::testing::Test
 {
@@ -54,6 +56,15 @@ TEST(PiezasTest, incorrectTurnOnInit)
 
 
 /***** Testing of reset() *****/
+
+/* Make sure it resets every space to blank */
+TEST(PiezasTest, resetBoard)
+{
+	Piezas obj; //create game object
+	obj.dropPiece(0); //drop an X in column 0
+	obj.reset(); //reset the board
+	ASSERT_EQ(obj.pieceAt(0,0), Blank); //assert that the X we just dropped has been reset
+}//resetBoard
 
 TEST(PiezasTest, resetBoard)
 {
@@ -278,6 +289,15 @@ TEST(PiezasTest, oVictory)
 	obj.dropPiece(0);
 	obj.dropPiece(1);
 	Piece o_victory = obj.gameState();
+	for(int i = 0; i < BOARD_ROWS; i++)
+	{
+		for(int j = 0; j < BOARD_COLS; j++)
+		{
+			if(obj.pieceAt(i, j) == O) string c = "O";
+			else string c = "X";
+			cout << c << " "
+		}
+	}
 	ASSERT_EQ(o_victory, O);
 }//xVictory
 
