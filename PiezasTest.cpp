@@ -226,6 +226,21 @@ TEST(PiezasTest, gameNotOver)
 	ASSERT_EQ(incompleteGame, Invalid);
 }//gameNotOver
 
+/* Check handling of a tie game */
+TEST(PiezasTest, gameIsATie)
+{
+	Piezas obj; //create game object
+	for(int i = 0; i < BOARD_ROWS; i++)
+	{
+		for(int j = 0; j < BOARD_COLS; j++)
+		{
+			obj.dropPiece(i, j); //auto populate board
+		}//for j
+	}// for i
+	Piece tie_game = obj.gameState();
+	ASSERT_EQ(tie_game, Blank);
+}//gameIsATie
+
 
 
 
